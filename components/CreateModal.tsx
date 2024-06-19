@@ -4,24 +4,19 @@ import React from 'react';
 export default function CreateModal() {
 	return (
 		<dialog id='modalCreate' className='modal'>
-			<div className='modal-box text-center'>
-				<form
-					action={createTodoList}
-					className='flex flex-col gap-y-2 w-[300px]'
-				>
+			<div className='modal-box text-center max-w-[300px]'>
+				<form action={createTodoList} className='flex flex-col gap-y-2 w-full'>
 					<input
 						type='text'
 						name='title'
 						placeholder='Title'
-						className='px-2 py-1 rounded-sm'
-						required
+						className='input input-bordered px-2 py-1 rounded-sm'
 					/>
 					<textarea
 						name='content'
 						rows={5}
 						placeholder='Content'
-						className='px-2 py-1 rounded-sm'
-						required
+						className='textarea textarea-bordered px-2 py-1 rounded-sm'
 					/>
 					<button
 						type='submit'

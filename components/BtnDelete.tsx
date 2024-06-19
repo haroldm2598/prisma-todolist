@@ -3,12 +3,9 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { deleteTodoList } from '@/actions/formActions';
+import { IdProps } from '@/lib/definition';
 
-interface BtnDeleteProps {
-	listId: string;
-}
-
-export default function BtnDelete({ listId }: BtnDeleteProps) {
+export default function BtnDelete({ listId }: IdProps) {
 	const handleDelete = async () => {
 		try {
 			await deleteTodoList(listId);
