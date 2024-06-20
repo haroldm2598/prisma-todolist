@@ -1,4 +1,3 @@
-import React from 'react';
 import prisma from '@/lib/db';
 import BtnDelete from '@/components/BtnDelete';
 import BtnExpand from '@/components/BtnExpand';
@@ -7,7 +6,13 @@ import CreateModal from '@/components/CreateModal';
 import Link from 'next/link';
 
 export default async function TodolistPage() {
-	const todolistPost = await prisma.todolist.findMany();
+	const todolistPost = await prisma.todolist.findMany({
+		include: {
+			desc: true
+		}
+	});
+
+	console.log(todolistPost);
 
 	return (
 		<section className='p-2'>
@@ -29,7 +34,9 @@ export default async function TodolistPage() {
 									<h1 className='font-semibold text-xl uppercase'>
 										{list.title}
 									</h1>
-									{/* <p>{list.content}</p> */}
+									{list.desc?.map((item) => (
+										<p key={item.id}>{item.content}</p>
+									))}
 								</div>
 
 								<div className='max-w-sm text-right [&>*]:ml-2'>
