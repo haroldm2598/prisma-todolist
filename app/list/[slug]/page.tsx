@@ -12,10 +12,11 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 	const todolist = await prisma.todolist.findUnique({
 		where: {
 			slug: params.slug
+		},
+		include: {
+			desc: true
 		}
 	});
-
-	const contentList = await prisma.contentList.findMany();
 
 	return (
 		<>
@@ -25,7 +26,7 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 						<h1 className='mb-2 text-xl font-semibold uppercase'>
 							{todolist?.title}
 						</h1>
-						{contentList.map((item) => {
+						{todolist?.desc.map((item) => {
 							return <p key={item.id}>{item.content}</p>;
 						})}
 					</div>
@@ -37,7 +38,7 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 				</div>
 			</section>
 
-			<ListModal />
+			<ListModal listId={todolist?.id as string} />
 		</>
 	);
 }

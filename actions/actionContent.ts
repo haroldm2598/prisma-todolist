@@ -8,36 +8,24 @@ const CreateContentListSchema = z.object({
 	content: z.string().min(1, { message: 'Content must not be empty' })
 });
 
-// export async function createList(formData: FormData) {
-// 	try {
-// 		// const { content } = CreateContentListSchema.parse({
-// 		// 	content: formData.get('content') as string
-// 		// });
-
-// 		await prisma.contentList.create({
-// 			data: {
-// 				content: formData.get('content') as string
-// 			}
-// 		});
-
-// 		revalidatePath('/list');
-// 	} catch (err) {
-// 		console.error('Validation error', err);
-// 	}
-// }
-
 export async function createList(formData: FormData) {
 	try {
+		// const { listId, content } = CreateContentListSchema.parse({
+		// 	listId: formData.get('listId') as string,
+		// 	content: formData.get('content') as string
+		// });
+
 		await prisma.contentList.create({
 			data: {
+				listId: formData.get('listId') as string,
 				content: formData.get('content') as string
 			}
 		});
-
-		revalidatePath('/list');
-	} catch (error) {
-		console.error('Error system cannot procceed', error);
+	} catch (err) {
+		console.error('Validation error', err);
 	}
+
+	revalidatePath('/list');
 }
 
 export async function editList(formData: FormData, id: string) {
