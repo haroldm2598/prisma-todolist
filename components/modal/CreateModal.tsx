@@ -1,40 +1,39 @@
 'use client';
 
 import { useRef } from 'react';
-import { createList } from '@/actions/actionContent';
+import { createTodoList } from '@/actions/todoAction';
 
-interface ListModalProps {
-	listId: string;
-}
-
-export default function ListModal({ listId }: ListModalProps) {
+export default function CreateModal() {
 	const ref = useRef<HTMLFormElement>(null);
 
-	const handleAction = async (formData: FormData) => {
-		await createList(formData);
-		ref.current?.reset();
-	};
-
 	return (
-		<dialog id='modalAddList' className='modal'>
+		<dialog id='modalCreate' className='modal'>
 			<div className='modal-box text-center max-w-[300px]'>
 				<form
 					ref={ref}
-					action={handleAction}
+					action={async (formData) => {
+						await createTodoList(formData);
+						ref.current?.reset();
+					}}
 					className='flex flex-col gap-y-2 w-full'
 				>
-					<input type='hidden' name='listId' value={listId} />
-					<textarea
+					<input
+						type='text'
+						name='title'
+						placeholder='Title'
+						className='input input-bordered px-2 py-1 rounded-sm'
+					/>
+					{/* <textarea
 						name='content'
 						rows={5}
 						placeholder='Content'
 						className='textarea textarea-bordered px-2 py-1 rounded-sm'
-					/>
+					/> */}
 					<button
 						type='submit'
 						className='bg-blue-500 py-2 text-white rounded-sm'
 					>
-						Create Content
+						Create Post
 					</button>
 				</form>
 			</div>

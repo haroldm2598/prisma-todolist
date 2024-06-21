@@ -1,14 +1,13 @@
 'use client';
 
-import React from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { deleteTodoList } from '@/actions/formActions';
+import { deleteList } from '@/actions/contentAction';
 import { IdProps } from '@/lib/definition';
 
-export default function BtnDelete({ listId }: IdProps) {
+export default function DeleteContent({ listId }: IdProps) {
 	const handleDelete = async () => {
 		try {
-			await deleteTodoList(listId);
+			await deleteList(listId);
 			console.log('todolist deleted successfully');
 		} catch (err) {
 			console.error('Error Delete list', err);
@@ -17,8 +16,8 @@ export default function BtnDelete({ listId }: IdProps) {
 
 	return (
 		<button
+			className='p-1 md:p-2 bg-red-500 text-white rounded-md text-xs'
 			onClick={handleDelete}
-			className='p-2 rounded-md text-sm bg-red-400 text-white'
 		>
 			<FaTrash />
 		</button>

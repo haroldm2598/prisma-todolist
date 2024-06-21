@@ -1,9 +1,9 @@
-import prisma from '@/lib/db';
-import BtnDelete from '@/components/BtnDelete';
-import BtnExpand from '@/components/BtnExpand';
-import BtnModal from '@/components/BtnModal';
-import CreateModal from '@/components/CreateModal';
 import Link from 'next/link';
+import prisma from '@/lib/db';
+import BtnDelete from '@/components/button/BtnDelete';
+import BtnExpand from '@/components/button/BtnExpand';
+import BtnModal from '@/components/button/BtnModal';
+import CreateModal from '@/components/modal/CreateModal';
 
 export default async function TodolistPage() {
 	const todolistPost = await prisma.todolist.findMany({
@@ -12,15 +12,13 @@ export default async function TodolistPage() {
 		}
 	});
 
-	console.log(todolistPost);
-
 	return (
 		<section className='p-2'>
 			<div className='text-right'>
 				<BtnModal name='add new' />
 			</div>
 
-			<div className='p-10 flex flex-col lg:flex-row flex-wrap justify-center gap-6'>
+			<div className='p-10 flex flex-col md:flex-row flex-wrap justify-center gap-6'>
 				{todolistPost.length === 0 ? (
 					<div>add new list... </div>
 				) : (

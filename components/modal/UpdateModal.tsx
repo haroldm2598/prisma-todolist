@@ -1,7 +1,7 @@
 'use client';
 import { FormEvent, useRef, useState } from 'react';
 import { IdProps } from '@/lib/definition';
-import { editTodoList } from '@/actions/formActions';
+import { editTodoList } from '@/actions/todoAction';
 
 export default function UpdateModal({ listId }: IdProps) {
 	const ref = useRef<HTMLFormElement>(null);

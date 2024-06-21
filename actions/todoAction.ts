@@ -34,6 +34,9 @@ export async function editTodoList(formData: FormData, id: string) {
 		title: formData.get('title') as string
 	});
 
+	// kailangan updated yung slug na kukunin dine
+	const updateSlug = formData.get('slug') as string;
+
 	await prisma.todolist.update({
 		where: { id },
 		data: {
@@ -41,7 +44,7 @@ export async function editTodoList(formData: FormData, id: string) {
 			slug: (formData.get('title') as string).replace(/\s+/g, '-').toLowerCase()
 		}
 	});
-	revalidatePath('/list/testing');
+	revalidatePath(`/list/${updateSlug}`);
 }
 
 export async function deleteTodoList(id: string) {
