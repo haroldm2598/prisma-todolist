@@ -32,9 +32,31 @@ export default async function TodolistPage() {
 									<h1 className='font-semibold text-xl uppercase'>
 										{list.title}
 									</h1>
-									{list.desc?.map((item) => (
-										<p key={item.id}>{item.content}</p>
-									))}
+									{list?.desc.length > 4
+										? list?.desc.slice(0, 4).map((item) => {
+												const truncateStr = item?.content;
+												const maxLength = 80;
+
+												return (
+													<p key={item.id}>
+														{truncateStr?.length > maxLength
+															? `${truncateStr.substring(0, maxLength)} ...`
+															: truncateStr}
+													</p>
+												);
+										  })
+										: list?.desc.map((item) => {
+												const truncateStr = item?.content;
+												const maxLength = 80;
+
+												return (
+													<p key={item.id}>
+														{truncateStr?.length > maxLength
+															? `${truncateStr.substring(0, maxLength)} ...`
+															: truncateStr}
+													</p>
+												);
+										  })}
 								</div>
 
 								<div className='max-w-sm text-right [&>*]:ml-2'>
