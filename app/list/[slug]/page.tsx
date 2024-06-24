@@ -2,7 +2,6 @@ import prisma from '@/lib/db';
 import BtnAdd from '@/components/button/BtnAdd';
 import BtnUpdate from '@/components/button/BtnUpdate';
 import ListModal from '@/components/modal/ListModal';
-import { Fragment } from 'react';
 import DeleteContent from '@/components/button/DeleteContent';
 import UpdateModal from '@/components/modal/UpdateModal';
 
