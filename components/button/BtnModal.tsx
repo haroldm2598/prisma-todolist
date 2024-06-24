@@ -13,7 +13,7 @@ export default function BtnModal({ name }: BtnModalProps) {
 
 	return (
 		<button
-			className='p-2 bg-slate-600 text-white dark:bg-slate-100 dark:text-slate-600 rounded-md text-sm'
+			className='p-2 bg-main200 text-white dark:bg-main300 dark:text-main200 rounded-md text-sm'
 			onClick={showModalList}
 		>
 			{name}

@@ -12,6 +12,12 @@ const config: Config = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+			},
+			colors: {
+				main100: '#475569',
+				main200: '#A696AF',
+				main300: '#FFF9FB',
+				main400: '#FFE1E1'
 			}
 		}
 	},

@@ -7,8 +7,8 @@ import { PageProps } from '@/lib/definition';
 
 export default async function TodolistPage(props: PageProps) {
 	return (
-		<section className='p-2 dark:bg-slate-600 dark:text-white min-h-screen'>
-			<div className='[&>*]:ml-2 flex justify-end items-center'>
+		<section className='p-2 dark:bg-main100 dark:text-white min-h-screen'>
+			<div className='space-x-4 flex justify-end items-center'>
 				<ThemeSwitch />
 
 				<div>

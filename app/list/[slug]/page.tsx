@@ -21,9 +21,9 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 	});
 
 	return (
-		<>
-			<section className='m-2 md:m-10 flex justify-center'>
-				<div className='w-96 md:min-w-[32rem] p-4 min-h-96 border border-gray-300 rounded-lg flex flex-col justify-between'>
+		<main className='dark:bg-slate-600 dark:text-white min-h-screen'>
+			<section className='p-2 md:p-10 flex justify-center '>
+				<div className='w-96 md:min-w-[32rem] p-4 min-h-96 border border-gray-300 rounded-lg flex flex-col justify-between dark:bg-slate-100 dark:text-slate-600 shadow-lg dark:shadow-gray-700'>
 					<div className=''>
 						<h1 className='mb-2 text-2xl font-semibold uppercase'>
 							{todolist?.title}
@@ -32,7 +32,7 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 							return (
 								<div
 									key={item.id}
-									className='p-1 [&>*]:mb-1.5 flex justify-between items-start'
+									className='p-1 [&>*]:mb-1.5 flex justify-between items-start '
 								>
 									<p className='max-w-96 text-sm leading-5'>{item.content}</p>
 
@@ -51,6 +51,6 @@ export default async function ListPageModal({ params }: ListPageModalProps) {
 
 			<UpdateModal listId={todolist?.id as string} />
 			<ListModal listId={todolist?.id as string} />
-		</>
+		</main>
 	);
 }

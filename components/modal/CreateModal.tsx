@@ -21,14 +21,8 @@ export default function CreateModal() {
 						type='text'
 						name='title'
 						placeholder='Title'
-						className='input input-bordered px-2 py-1 rounded-sm'
+						className='input input-bordered px-2 py-1 rounded-sm dark:text-slate-600'
 					/>
-					{/* <textarea
-						name='content'
-						rows={5}
-						placeholder='Content'
-						className='textarea textarea-bordered px-2 py-1 rounded-sm'
-					/> */}
 					<button
 						type='submit'
 						className='bg-blue-500 py-2 text-white rounded-sm'

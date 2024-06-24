@@ -16,7 +16,7 @@ async function fetchFeed({ take = PAGE_SIZE, skip = 0 }) {
 		take,
 		skip,
 		orderBy: {
-			title: 'desc'
+			createdAt: 'desc'
 		},
 		include: {
 			desc: true
@@ -44,7 +44,7 @@ export default async function Feed(props: PageProps) {
 
 	return (
 		<section className='flex flex-col items-center py-4'>
-			<div className='p-10 flex flex-col md:flex-row flex-wrap justify-center gap-6 '>
+			<div className='p-2 md:p-10 flex flex-col md:flex-row flex-wrap justify-center gap-6 '>
 				{data.length === 0 ? (
 					<div className='dark:text-white'>Add new Todolist....</div>
 				) : (
@@ -52,7 +52,7 @@ export default async function Feed(props: PageProps) {
 						return (
 							<div
 								key={list.id}
-								className='flex flex-col justify-between p-4 max-w-sm w-96 min-h-64 dark:bg-slate-100 dark:text-slate-600 border border-gray-300 rounded-lg shadow-lg dark:shadow-gray-700'
+								className='flex flex-col justify-between p-4 w-72 md:w-96 max-w-sm min-h-64 dark:bg-main300 dark:text-main100 border border-gray-300 rounded-lg shadow-lg dark:shadow-gray-700'
 							>
 								<div>
 									<h1 className='font-semibold text-xl uppercase'>

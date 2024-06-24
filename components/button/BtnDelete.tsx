@@ -17,7 +17,7 @@ export default function BtnDelete({ listId }: IdProps) {
 	return (
 		<button
 			onClick={handleDelete}
-			className='p-2 rounded-md text-sm bg-red-400 text-white'
+			className='p-2 rounded-md text-sm bg-main200 text-white opacity-60'
 		>
 			<FaTrash />
 		</button>
