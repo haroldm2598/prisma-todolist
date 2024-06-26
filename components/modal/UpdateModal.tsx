@@ -1,5 +1,6 @@
 'use client';
 import { FormEvent, useRef, useState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { IdProps } from '@/lib/definition';
 import { editTodoList } from '@/actions/todoAction';
 
@@ -29,20 +30,25 @@ export default function UpdateModal({ listId }: IdProps) {
 						type='text'
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
-						className='input input-bordered px-2 py-1 rounded-sm'
+						className='input input-bordered px-2 py-1 rounded-sm text-main100'
 					/>
 
-					<button
-						type='submit'
-						className='bg-blue-500 py-2 text-white rounded-sm'
-					>
-						Update Post
-					</button>
+					<Button />
 				</form>
 			</div>
 			<form method='dialog' className='modal-backdrop'>
 				<button>close</button>
 			</form>
 		</dialog>
+	);
+}
+
+export function Button() {
+	const status = useFormStatus();
+
+	return (
+		<button type='submit' className='bg-blue-500 py-2 text-white rounded-sm'>
+			{status.pending ? 'Saving....' : 'Update Post'}
+		</button>
 	);
 }

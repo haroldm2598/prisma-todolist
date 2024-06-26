@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const CreateTodoListSchema = z.object({
@@ -34,14 +35,6 @@ export async function editTodoList(formData: FormData, id: string) {
 		title: formData.get('title') as string
 	});
 
-	// kailangan updated yung slug na kukunin dine
-	const updateTodolist = await prisma.todolist.findUnique({
-		where: { id: id },
-		include: {
-			desc: true
-		}
-	});
-
 	await prisma.todolist.update({
 		where: { id },
 		data: {
@@ -49,7 +42,15 @@ export async function editTodoList(formData: FormData, id: string) {
 			slug: (formData.get('title') as string).replace(/\s+/g, '-').toLowerCase()
 		}
 	});
-	revalidatePath(`/list/${updateTodolist?.slug}`);
+
+	const updateTodolist = await prisma.todolist.findUnique({
+		where: { id: id },
+		include: {
+			desc: true
+		}
+	});
+
+	revalidatePath(`/list/${id}`);
 }
 
 export async function deleteTodoList(id: string) {
